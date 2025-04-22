@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery</title>
+    <link rel="stylesheet" href="CSS3 Task2 .css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 7px;
+
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            transition: 0.5s;
+        }
+
+
+        .gallery img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <img src="./images test/1.jpeg" alt="صورة 1">
+        <img src="./images test/2.jpeg" alt="صورة 2">
+        <img src="./images test/3.jpeg" alt="صورة 3">
+        <img src="./images test/4.jpeg" alt="صورة 4">
+    </div>
+</body>
+
+</html>
