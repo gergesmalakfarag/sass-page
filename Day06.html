@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form</title>
+</head>
+<body>
+  <h1>Login Form</h1>
+  <form id="loginForm">  
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" /><br />
+  <label for="Password">Password</label>
+  <input type="Password" id="Password" name="Password" /><br />
+  <label for="rememberme">remember me</label>
+  <input type="checkbox" id="rememberme" name="rememberme"><br>
+  <button type="submit">submit</button>
+  <script src="./Day06.js"></script>
+
+
+<!-- 2- -->
+<h1>Popup Window Example</h1>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<!-- Link to open the advertising window after 3 seconds -->
+<p>
+    <a href="#" id="openAdLink">Click here to open an advertising window after 3 seconds</a>
+</p>
+
+<!-- Link to close the advertising window -->
+<p>
+    <a href="#" id="closeAdLink">Click here to close the advertising window</a>
+</p>
+
+<script>
+  let adWindow;
+
+  // Function to open the advertising window after 3 seconds
+  document.getElementById('openAdLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      setTimeout(function() {
+          adWindow = window.open('https://www.example.com', '_blank', 'width=600,height=400');
+          if (!adWindow) {
+              alert('Popup blocked! Please allow popups for this site.');
+          }
+      }, 3000); // 3000 milliseconds = 3 seconds
+  });
+
+  // Function to close the advertising window
+  document.getElementById('closeAdLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      if (adWindow && !adWindow.closed) {
+          adWindow.close();
+      } else {
+          alert('The advertising window is not open or has already been closed.');
+      }
+  });
+</script>
+
+
+<!-- 3- -->
+
+
+    <h1>Login Form</h1>
+
+    <form action="welcome.html" method="get">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your user name here" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <input type="submit" value="Login">
+    </form>
+    h1 {
+      font-size: 3em;
+      color: #007BFF;
+  }
+
+<body>
+
+<script>
+  // Extract the username from the URL query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const username = urlParams.get('username');
+
+  // Display the welcome message
+  if (username) {
+      document.write(`<h1>Welcome, <strong>${username}</strong>!</h1>`);
+  } else {
+      document.write('<h1>Welcome, Guest!</h1>');
+  }
+</script>
+
+<!-- 3-2- -->
+<script>
+  // Function to auto-scroll the page
+  function autoScroll() {
+      window.scrollBy(0, 1); // Scroll down by 1 pixel
+  }
+
+  // Start auto-scrolling every 500 milliseconds (half second)
+  setInterval(autoScroll, 500);
+</script>
+</body>
+</html>
