@@ -1,0 +1,68 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.alert, .Warning, .Msg, .success {
+  padding: 1rem;
+  border-radius: 8px;
+  color: rgb(89, 255, 0);
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+.alert:hover, .Warning:hover, .Msg:hover, .success:hover {
+  background-color: rgb(109.9800796813, 192.0199203187, 113.2948207171);
+}
+
+.success {
+  background-color: #ff0000;
+}
+
+.Msg {
+  background-color: rgb(255, 255, 255);
+}
+
+.Warning {
+  background-color: rgb(0, 0, 0);
+}
+
+body {
+  background: #121212;
+  color: white;
+}
+
+.margin-1 {
+  margin: 10px;
+}
+
+.margin-2 {
+  margin: 20px;
+}
+
+.margin-3 {
+  margin: 30px;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.debug-example {
+  background: hsl(331, 70%, 60%);
+}
+
+/*# sourceMappingURL=style.css.map */

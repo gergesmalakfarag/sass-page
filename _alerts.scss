@@ -1,0 +1,30 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'functions' as *;
+
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 1rem;
+  @include simple-animation;
+
+  &:hover {
+    background-color: lighten($main-color, 10%);
+  }
+}
+
+.success {
+  @extend .alert;
+  background-color: $main-color;
+}
+
+.Msg {
+  @extend .alert;
+  background-color: darken($main-color, 10%);
+}
+
+.Warning {
+  @extend .alert;
+  background-color: red;
+}

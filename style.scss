@@ -1,0 +1,31 @@
+@use 'variables.scss';
+@use 'functions.scss';
+@use 'mixins.scss';
+@use 'alerts.scss';
+
+body {
+  @if variables.$theme == dark {
+    background: #121212;
+    color: white;
+  } @else {
+    background: white;
+    color: black;
+  }
+}
+
+@for $i from 1 through 3 {
+  .margin-#{$i} {
+    margin: $i * 10px;
+  }
+}
+
+@each $color in variables.$colors {
+  .text-#{$color} {
+    color: $color;
+  }
+}
+
+.debug-example {
+  background: functions.random-color();
+}
+@debug lighten(#3498db, 20%);

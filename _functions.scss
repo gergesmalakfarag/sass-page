@@ -1,0 +1,4 @@
+@function random-color() {
+    @return hsl(random(360), 70%, 60%);
+  }
+  
