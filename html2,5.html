@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Assignment</title>
+    
+</head>
+<body>
+    <h1>Drag and Drop Assignment</h1>
+
+    <!-- Drop Zone -->
+    <div id="drop-zone"   style="width: 1000px; height: 1000px; border: 10px solid red">
+        Drop the specific image here!
+        
+    </div>
+
+    <!-- Images -->
+    <div>
+        <img src="th (1).jpeg" id="image1" draggable="true" alt="Image 1">
+        <img src="th (2).jpeg" id="image2" draggable="true" alt="Image 2">
+        <img src="th (3).jpeg" id="image3" draggable="true" alt="Image 3">
+        <img src="th (4).jpeg" id="image4" draggable="true" alt="Image 4">
+    </div>
+
+    <script>
+        // الحصول على منطقة الإسقاط والصور
+        const dropZone = document.getElementById('drop-zone');
+        const images = document.querySelectorAll('img');
+
+        // متغير لتخزين معرف الصورة المسحوبة
+        let draggedImageId = null;
+
+        // إضافة مستمعي الأحداث للصور عند بدء السحب
+        images.forEach(image => {
+            image.addEventListener('dragstart', (e) => {
+                draggedImageId = e.target.id; // تخزين معرف الصورة المسحوبة
+            });
+        });
+
+        // إضافة مستمعي الأحداث لمنطقة الإسقاط
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault(); // السماح بالإسقاط
+            dropZone.classList.add('drag-over'); // إضافة تأثير مرئي
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over'); // إزالة التأثير المرئي
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over'); // إزالة التأثير المرئي
+
+            // تحديد الصور المسموح بها (مثال: image1 و image2)
+            const allowedImages = ['image1', 'image2','image3'];
+             // إذا كان النص الأصلي موجودًا، قم بإزالته
+             if (dropZone.innerText === "Drop the specific image here!") {
+                    dropZone.innerText = ''; // إزالة النص
+                }
+
+
+            // التحقق مما إذا كانت الصورة المسحوبة مسموح بها
+            if (allowedImages.includes(draggedImageId)) {
+                
+                const image = document.getElementById(draggedImageId);
+                const clonedImage = image.cloneNode(true); // استنساخ الصورة
+                dropZone.appendChild(clonedImage); // إضافة الصورة إلى منطقة الإسقاط
+            } else {
+                alert('Nooooooooo');
+            }
+        });
+    </script>
+
+<h1>------------------------------------------------///------------------------------</h1>
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- الوجه -->
+    <circle cx="150" cy="150" r="120" fill="#ffcc00" id="face" />
+
+    <!-- العيون -->
+    <circle cx="100" cy="120" r="20" fill="#fff" id="left-eye" />
+    <circle cx="200" cy="120" r="20" fill="#fff" id="right-eye" />
+
+    <!-- الأنف -->
+    <ellipse cx="150" cy="170" rx="15" ry="25" fill="#ff6666" id="nose" />
+
+    <!-- الفم -->
+    <ellipse cx="150" cy="220" rx="40" ry="20" fill="#ff6666" id="mouth" />
+</svg>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+<br><br><br><br>
+<script>
+    // الحصول على عناصر SVG
+    const face = document.getElementById('face');
+    const leftEye = document.getElementById('left-eye');
+    const rightEye = document.getElementById('right-eye');
+    const nose = document.getElementById('nose');
+    const mouth = document.getElementById('mouth');
+    const tooltip = document.getElementById('tooltip');
+
+    // إضافة أحداث mouseover لكل جزء
+    leftEye.addEventListener('mouseover', () => showTooltip('Left Eye', event));
+    rightEye.addEventListener('mouseover', () => showTooltip('Right Eye', event));
+    nose.addEventListener('mouseover', () => showTooltip('Nose', event));
+    mouth.addEventListener('mouseover', () => showTooltip('Mouth', event));
+
+    // إضافة حدث mouseout لإخفاء الـ tooltip
+    [leftEye, rightEye, nose, mouth].forEach(part => {
+        part.addEventListener('mouseout', () => {
+            tooltip.style.display = 'none';
+        });
+    });
+
+    // دالة لإظهار الـ tooltip
+    function showTooltip(text, event) {
+        tooltip.innerText = text;
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${event.clientX + 10}px`;
+        tooltip.style.top = `${event.clientY + 10}px`;
+    }
+    
+</script>
+<br><br>
+<h1>------------------------------------------------///------------------------------</h1>
+<div itemscope itemtype="https://schema.org/Organization">
+    <h2 itemprop="name">SD & Gaming CoE, ITI</h2>
+    <p>This text will be displayed on the web page but won’t be machine processed because its parent tag doesn’t have a specific itemprop.</p>
+    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <span itemprop="streetAddress">km 28 Cairo-Alexandria Desert Road, Smart Village</span>,
+        <span itemprop="addressLocality">Giza</span>,
+        <span itemprop="addressRegion">Egypt</span>,
+        <span itemprop="postalCode">11371</span>
+    </div>
+    <br/>
+    Call us at: <span itemprop="telephone">35355695</span><br/><br/>
+    <div>
+        <a href="http://www.iti.gov.eg" itemprop="url">
+            <mark>http://www.iti.gov.eg</mark>
+        </a>
+    </div>
+</div>
+
+
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid #000;"></canvas>
+    
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        const sadFace = new Image();
+        const smileyFace = new Image();
+        
+        sadFace.src = "sad.png"; // تحميل الصورة الحزينة
+        smileyFace.src = "smiley.png"; // تحميل الصورة السعيدة
+
+        sadFace.onload = function () {
+            ctx.drawImage(sadFace, 0, 0, canvas.width, canvas.height);
+        };
+
+        canvas.addEventListener("mousedown", function () {
+            ctx.drawImage(smileyFace, 0, 0, canvas.width, canvas.height);
+        });
+    </script>
+
+
+
+
+</body>
+</html>
